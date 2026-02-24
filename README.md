@@ -111,3 +111,33 @@ python uci.py
 ## 📜 License
 
 FENRIX is released under GNU GPL v3.
+---
+
+## 👥 Development Team
+
+FENRIX is developed and maintained by:
+
+### 🧠 Lead Developer
+- **Djaafar Lecheheb** — Founder & Engine Architect  
+  [GitHub Profile](https://github.com/LechehebDjaafar)
+
+---
+
+### 🤝 Contributors
+
+Contributions are welcome.
+
+If you would like to contribute to FENRIX:
+
+- Improve search performance
+- Enhance NNUE training
+- Optimize evaluation
+- Improve testing infrastructure
+
+Please open a Pull Request or start a Discussion.
+
+---
+
+<p align="center">
+  Built with ambition. Engineered with precision. ♟️
+</p>
