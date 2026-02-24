@@ -1,19 +1,29 @@
 <p align="center">
-  <img src="assets/logo.png" width="160">
+  <img src="assets/logo.png" width="140">
 </p>
 
-# FENRIX
+<h1 align="center">FENRIX</h1>
 
-**A modern high-performance UCI chess engine**
+<p align="center">
+  A free and strong UCI chess engine.<br>
+  Built for strength, scalability, and intelligent evaluation.
+</p>
 
-🇩🇿 Proudly built in Algeria
+<p align="center">
+  <a href="https://github.com/official-fenrix/fenrix/issues">Report a bug</a>
+  ·
+  <a href="https://github.com/official-fenrix/fenrix/discussions">Open a discussion</a>
+  ·
+  <a href="https://github.com/official-fenrix/fenrix/releases">Releases</a>
+</p>
 
----
 
-![Language](https://img.shields.io/badge/Language-Python-blue)
-![Protocol](https://img.shields.io/badge/Protocol-UCI-green)
-![License](https://img.shields.io/badge/License-GPLv3-red)
-![Status](https://img.shields.io/badge/Status-Active-orange)
+<p align="center">
+  <img alt="License" src="https://img.shields.io/github/license/official-fenrix/fenrix">
+  <img alt="Stars" src="https://img.shields.io/github/stars/official-fenrix/fenrix?style=flat">
+  <img alt="Issues" src="https://img.shields.io/github/issues/official-fenrix/fenrix">
+  <img alt="Last commit" src="https://img.shields.io/github/last-commit/official-fenrix/fenrix">
+</p>
 
 ---
 
