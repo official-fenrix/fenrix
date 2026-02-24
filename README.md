@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/official-fenrix/.github/main/logo.png" width="160">
+  <img src="assets/logo.png" width="160">
 </p>
 
 # FENRIX
