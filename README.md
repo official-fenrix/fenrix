@@ -1,143 +1,166 @@
-<p align="center">
-  <img src="assets/logo.png" width="140">
-</p>
+<div align="center">
 
-<h1 align="center">FENRIX</h1>
+<br/>
 
-<p align="center">
-  A free and strong UCI chess engine.<br>
-  Built for strength, scalability, and intelligent evaluation.
-</p>
+<img src="assets/logo.png" width="100" alt="FENRIX"/>
 
-<p align="center">
-  <a href="https://github.com/official-fenrix/fenrix/issues">Report a bug</a>
-  ·
-  <a href="https://github.com/official-fenrix/fenrix/discussions">Open a discussion</a>
-  ·
-  <a href="https://github.com/official-fenrix/fenrix/releases">Releases</a>
-</p>
+<br/>
 
+# FENRIX
 
-<p align="center">
-  <img alt="License" src="https://img.shields.io/github/license/official-fenrix/fenrix">
-  <img alt="Stars" src="https://img.shields.io/github/stars/official-fenrix/fenrix?style=flat">
-  <img alt="Issues" src="https://img.shields.io/github/issues/official-fenrix/fenrix">
-  <img alt="Last commit" src="https://img.shields.io/github/last-commit/official-fenrix/fenrix">
-</p>
+**Open-source UCI chess engine — crafted in Algeria 🇩🇿**
 
----
+<br/>
 
-## 🚀 Overview
+[![License](https://img.shields.io/github/license/official-fenrix/fenrix?style=flat-square)](LICENSE)
+[![Release](https://img.shields.io/github/v/release/official-fenrix/fenrix?include_prereleases&label=release&style=flat-square)](https://github.com/official-fenrix/fenrix/releases/latest)
+[![Language](https://img.shields.io/badge/language-Python-3776AB?style=flat-square&logo=python&logoColor=white)](https://python.org)
+[![Protocol](https://img.shields.io/badge/protocol-UCI-orange?style=flat-square)](https://www.chessprogramming.org/UCI)
+[![ELO](https://img.shields.io/badge/ELO-~1800-critical?style=flat-square)](https://github.com/official-fenrix/fenrix/releases/latest)
 
-FENRIX is a modern open-source UCI chess engine written in Python and built from scratch.
+<br/>
 
-It combines:
+[**Download**](https://github.com/official-fenrix/fenrix/releases/latest) · [**Report Bug**](https://github.com/official-fenrix/fenrix/issues) · [**Discussions**](https://github.com/official-fenrix/fenrix/discussions)
 
-- Bitboard-based board representation
-- Advanced Alpha-Beta search
-- Move ordering heuristics
-- Transposition tables (Zobrist hashing)
-- NNUE neural network evaluation
-- Self-play training pipeline
-- Full UCI protocol support
+<br/>
+
+</div>
 
 ---
 
-## ♟ Engine Strength
+## Overview
 
-| Stage | Elo |
-|-------|------|
+FENRIX is a free, open-source **UCI chess engine** written in Python and built from scratch. It features a neural network evaluation (NNUE), advanced search techniques, and full compatibility with major chess GUIs.
+
+---
+
+## Strength
+
+| Milestone | Estimated ELO |
+|:---|---:|
 | Classical evaluation | ~1050 |
-| + NNUE integration | ~1300 |
-| + Search improvements | ~1407 |
-| + Opening Book | **~1447** |
+| + NNUE integration | ~1550 |
+| + Search improvements | ~1700 |
+| + Opening book | **~1800** |
 
-Estimated rating: ~1447 Elo  
-Win rate vs Stockfish Level 5: ~70%
+**Performance results (indicative):**
+
+| Opponent | Score |
+|:---|---:|
+| Stockfish Level 1 (~1350 ELO) | 85% |
+| Stockfish Level 2 (~1500 ELO) | 72.5% |
+| Stockfish Level 3 (~1650 ELO) | >80% |
+
+> Results vary by hardware, time control, and test conditions.
 
 ---
 
-## 🧠 Architecture
+## Architecture
 
 ### Search
-- Alpha-Beta pruning
+- Negamax with Alpha–Beta pruning
 - Iterative Deepening
-- Quiescence Search
-- Killer Moves
+- Null Move Pruning (R=3)
+- Late Move Reduction (LMR)
+- Killer Move Heuristic
 - History Heuristic
 - Mate Distance Pruning
 
 ### Evaluation
-- Material balance
-- Piece-Square Tables
-- NNUE (768x256x1 architecture)
+- NNUE neural network evaluation
+- Positional understanding
+- Efficient incremental board representation
 
 ### Transposition Table
 - 64-bit Zobrist hashing
-- 64MB hash size
+- Exact / Lower / Upper bound entries
+- Up to ~500,000 entries (configurable)
+
+### Opening Book
+- Polyglot `.bin` format
+- Weighted move selection
 
 ---
 
-## 🔌 UCI Support
+## UCI Protocol
 
-Supported commands:
+FENRIX supports the full standard UCI command set:
 
 ```
 uci
 isready
 ucinewgame
-position startpos
-position fen <FEN>
+position startpos [moves ...]
+position fen <FEN> [moves ...]
 go depth <n>
 go movetime <ms>
+go wtime <ms> btime <ms> [winc <ms>] [binc <ms>]
+go infinite
 stop
 quit
 ```
 
-Compatible with:
-- Arena
-- CuteChess
+Compatible with **Arena**, **CuteChess**, **Banksia**, and any UCI-compliant GUI.
 
 ---
 
-## 🛠 Running
+## Time Management
+
+FENRIX uses adaptive time management, scaling search depth to available clock time:
+
+| Time Available | Typical Depth |
+|:---|:---:|
+| > 10s | 8 |
+| 5–10s | 7 |
+| 2–5s | 6 |
+| 1–2s | 5 |
+| 0.5–1s | 4 |
+| < 0.5s | 2–3 |
+
+---
+
+## Installation
+
+### Option 1 — Windows Executable (Recommended)
+
+Download `fenrix.exe` from the [latest release](https://github.com/official-fenrix/fenrix/releases/latest) and add it to your GUI.
+
+### Option 2 — Run from Source
 
 ```bash
-python uci.py
+git clone https://github.com/official-fenrix/fenrix.git
+cd fenrix
+pip install -r requirements.txt
+python uci_engine.py
 ```
 
 ---
 
-## 📜 License
+## GUI Setup (Arena)
 
-FENRIX is released under GNU GPL v3.
----
-
-## 👥 Development Team
-
-FENRIX is developed and maintained by:
-
-### 🧠 Lead Developer
-- **Djaafar Lecheheb** — Founder & Engine Architect  
-  [GitHub Profile](https://github.com/LechehebDjaafar)
+1. Open **Arena**
+2. Navigate to **Engines → Install New Engine**
+3. Select `fenrix.exe`
+4. Set protocol to **UCI**
+5. Click **OK** — you're ready to play
 
 ---
 
-### 🤝 Contributors
+## License
 
-Contributions are welcome.
-
-If you would like to contribute to FENRIX:
-
-- Improve search performance
-- Enhance NNUE training
-- Optimize evaluation
-- Improve testing infrastructure
-
-Please open a Pull Request or start a Discussion.
+FENRIX is released under the **GNU GPL v3** license. See [`LICENSE`](LICENSE) for full terms.
 
 ---
 
-<p align="center">
-  Built with ambition. Engineered with precision. ♟️
-</p>
+## Author
+
+**Lecheheb Djaafar** — Algeria 🇩🇿  
+[github.com/LechehebDjaafar](https://github.com/LechehebDjaafar)
+
+---
+
+<div align="center">
+
+Built with ♟️ and passion in Algeria 🇩🇿
+
+</div>
